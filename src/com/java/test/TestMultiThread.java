@@ -1,38 +1,7 @@
 package com.java.test;
 
-class Thread4 implements Runnable {
-
-	private String name;
-	private Object self;
-	private Object next;
-
-	public Thread4(String name, Object self, Object next) {
-		this.name = name;
-		this.self = self;
-		this.next = next;
-	}
-
-	@Override
-	public void run() {
-		int count = 10;
-		while (count > 0) {
-			synchronized (self) {
-				synchronized (next) {
-					System.out.println(name);
-					count--;
-					self.notify();
-
-				}
-				try {
-					next.wait();
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			}
-		}
-	}
-
-}
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 class Thread3 implements Runnable {
 
@@ -121,11 +90,19 @@ public class TestMultiThread {
 		Object c = new Object();
 		Object d = new Object();
 		Object e = new Object();
-		Thread4 ta = new Thread4("A", a, b);
-		Thread4 tb = new Thread4("B", b, c);
-		Thread4 tc = new Thread4("C", c, d);
-		Thread4 td = new Thread4("D", d, e);
-		Thread4 te = new Thread4("E", e, a);
+		Thread3 ta = new Thread3("A", e, a);
+		Thread3 tb = new Thread3("B", a, b);
+		Thread3 tc = new Thread3("C", b, c);
+		Thread3 td = new Thread3("D", c, d);
+		Thread3 te = new Thread3("E", d, e);
+		// 行不通
+		// ExecutorService exec = Executors.newSingleThreadExecutor();
+		// Thread3[] objArr = new Thread3[] { ta, tb, tc, td, te };
+		// for (int i = 0; i < objArr.length; i++) {
+		// exec.execute(objArr[i]);
+		// }
+		// exec.shutdown();
+
 		new Thread(ta).start();
 		Thread.sleep(100);
 		new Thread(tb).start();
@@ -136,28 +113,6 @@ public class TestMultiThread {
 		Thread.sleep(100);
 		new Thread(te).start();
 		Thread.sleep(100);
-
-		// Object a = new Object();
-		// Object b = new Object();
-		// Object c = new Object();
-		// Object d = new Object();
-		// Object e = new Object();
-		// Thread3 ta = new Thread3("A", e, a);
-		// Thread3 tb = new Thread3("B", a, b);
-		// Thread3 tc = new Thread3("C", b, c);
-		// Thread3 td = new Thread3("D", c, d);
-		// Thread3 te = new Thread3("E", d, e);
-
-		// new Thread(ta).start();
-		// Thread.sleep(100);
-		// new Thread(tb).start();
-		// Thread.sleep(100);
-		// new Thread(tc).start();
-		// Thread.sleep(100);
-		// new Thread(td).start();
-		// Thread.sleep(100);
-		// new Thread(te).start();
-		// Thread.sleep(100);
 
 		// Thread1 th1 = new Thread1("A");
 		// Thread1 th2 = new Thread1("B");
