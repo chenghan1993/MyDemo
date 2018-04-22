@@ -1,8 +1,5 @@
 package com.java.test;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
 class Thread3 implements Runnable {
 
 	private String name;
