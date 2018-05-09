@@ -1,4 +1,4 @@
-package com.java.test.multiThread;
+package com.java.multiThread.test;
 
 class Thread3 implements Runnable {
 

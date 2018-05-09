@@ -1,4 +1,4 @@
-package com.java.frame.multiThread;
+package com.java.multiThread.frame;
 
 import java.util.Collection;
 import java.util.Queue;

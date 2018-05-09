@@ -1,4 +1,4 @@
-package com.java.test.multiThread;
+package com.java.multiThread.test;
 
 import java.util.ArrayList;
 import java.util.Date;

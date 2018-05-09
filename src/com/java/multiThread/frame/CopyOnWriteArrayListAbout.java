@@ -1,4 +1,4 @@
-package com.java.frame.multiThread;
+package com.java.multiThread.frame;
 
 /**
  * CopyOnWriteArrayList在java的并发场景中用得其实并不多，因为它并不能完全保证读取数据的正确性<br>

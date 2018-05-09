@@ -1,4 +1,4 @@
-package com.java.frame.multiThread;
+package com.java.multiThread.frame;
 
 /**
  * ConcurrentHashMap是java并发包中非常有用的一个类，在高并发场景用得非常多，它是线程安全的。
